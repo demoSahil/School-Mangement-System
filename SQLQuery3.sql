@@ -1,0 +1,1 @@
+﻿SELECT * FROM StudentTeachers WHERE S_ID=1

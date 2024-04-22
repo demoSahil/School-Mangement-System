@@ -1,0 +1,20 @@
+<Teachers>
+  <Teacher>
+    <Id>1</Id>
+    <Name>Pritam</Name>
+    <Subject>ASP.Net Core</Subject>
+    <Contact>9518856654</Contact>
+  </Teacher>
+  <Teacher>
+    <Id>3</Id>
+    <Name>Sahil</Name>
+    <Subject>MERN Stack</Subject>
+    <Contact>7456521454</Contact>
+  </Teacher>
+  <Teacher>
+    <Id>4</Id>
+    <Name>Ayush</Name>
+    <Subject>PHP Laravel</Subject>
+    <Contact>9546545895</Contact>
+  </Teacher>
+</Teachers>

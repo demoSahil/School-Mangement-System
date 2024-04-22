@@ -1,0 +1,6 @@
+C:\Users\sahil\source\repos\School Management System\SMS_VO\bin\Debug\SMS_VO.dll
+C:\Users\sahil\source\repos\School Management System\SMS_VO\bin\Debug\SMS_VO.pdb
+C:\Users\sahil\source\repos\School Management System\SMS_VO\obj\Debug\SMS_VO.csproj.AssemblyReference.cache
+C:\Users\sahil\source\repos\School Management System\SMS_VO\obj\Debug\SMS_VO.csproj.CoreCompileInputs.cache
+C:\Users\sahil\source\repos\School Management System\SMS_VO\obj\Debug\SMS_VO.dll
+C:\Users\sahil\source\repos\School Management System\SMS_VO\obj\Debug\SMS_VO.pdb

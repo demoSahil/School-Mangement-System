@@ -1,0 +1,71 @@
+﻿@model IEnumerable<SMS_VO.cls_Teacher_VO>
+@{
+    ViewData["ToastMessage"] = TempData["_ToastMessage"];
+}
+
+@{
+    Html.RenderPartial("_Toaster", ViewData["ToastMessage"]);
+}
+
+<style>
+    #search {
+        float: right;
+        border-radius: 30px;
+        display: flex;
+        border: 2px solid black;
+        margin-top: 62px;
+    }
+</style>
+<input type="search" id="search" />
+<h2>Teacher List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TeacherId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeacherName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactNumber)
+        </th>
+
+        <th></th>
+    </tr>
+    <tbody id="table-body">
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td class="student-id" id=@item.TeacherId>
+                    @Html.DisplayFor(modelItem => item.TeacherId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeacherName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactNumber)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TeacherId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.TeacherId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TeacherId }, new { @class = "delete-btn", id = item.TeacherId })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@Scripts.Render("~/Content/JS/TeacherList.js");

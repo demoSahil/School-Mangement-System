@@ -1,0 +1,92 @@
+<Students>
+  <Student>
+    <Id>1</Id>
+    <FirstName>Amittrr</FirstName>
+    <LastName>Patel</LastName>
+    <DOB>1995-03-10T00:00:00</DOB>
+    <City>123, ABC Street, City, State, PIN</City>
+    <Gender>F</Gender>
+    <Email>amit.patel@email.com</Email>
+    <PhoneNumber>9518856982</PhoneNumber>
+  </Student>
+  <Student>
+    <Id>2</Id>
+    <FirstName>Priya</FirstName>
+    <LastName>Sharma</LastName>
+    <DOB>1997-07-18T00:00:00</DOB>
+    <City>456, XYZ Road, Town, State, PIN</City>
+    <Gender>F</Gender>
+    <Email>priya.sharma@email.com</Email>
+    <PhoneNumber>789-456-1230</PhoneNumber>
+  </Student>
+  <Student>
+    <Id>3</Id>
+    <FirstName>Rahul</FirstName>
+    <LastName>Sharma</LastName>
+    <DOB>1993-11-25T00:00:00</DOB>
+    <City>789, LMN Lane, Village, State, PIN</City>
+    <Gender>M</Gender>
+    <Email>rahul.verma@email.com</Email>
+    <PhoneNumber>555-123-4567</PhoneNumber>
+  </Student>
+  <Student>
+    <Id>6</Id>
+    <FirstName>Sneha</FirstName>
+    <LastName>Yadav</LastName>
+    <DOB>1998-12-20T00:00:00</DOB>
+    <City>876, JKL Lane, Village, State, PIN</City>
+    <Gender>F</Gender>
+    <Email>sneha.yadav@email.com</Email>
+    <PhoneNumber>111-333-5555</PhoneNumber>
+  </Student>
+  <Student>
+    <Id>8</Id>
+    <FirstName>Anjali</FirstName>
+    <LastName>Shukla</LastName>
+    <DOB>1997-08-14T00:00:00</DOB>
+    <City>789, ABC Road, Town, State, PIN</City>
+    <Gender>F</Gender>
+    <Email>anjali.shukla@email.com</Email>
+    <PhoneNumber>222-666-8888</PhoneNumber>
+  </Student>
+  <Student>
+    <Id>9</Id>
+    <FirstName>Suresh</FirstName>
+    <LastName>Yadav</LastName>
+    <DOB>1991-10-05T00:00:00</DOB>
+    <City>432, MNO Lane, Village, State, PIN</City>
+    <Gender>M</Gender>
+    <Email>suresh.yadav@email.com</Email>
+    <PhoneNumber>888-444-7777</PhoneNumber>
+  </Student>
+  <Student>
+    <Id>10</Id>
+    <FirstName>Pooja</FirstName>
+    <LastName>Mishra</LastName>
+    <DOB>1995-02-12T00:00:00</DOB>
+    <City>654, XYZ Street, City, State, PIN</City>
+    <Gender>F</Gender>
+    <Email>pooja.mishra@email.com</Email>
+    <PhoneNumber>333-777-5555</PhoneNumber>
+  </Student>
+  <Student>
+    <Id>11</Id>
+    <FirstName>Kunal</FirstName>
+    <LastName>Sinha</LastName>
+    <DOB>1993-06-30T00:00:00</DOB>
+    <City>876, PQR Lane, Village, State, PIN</City>
+    <Gender>M</Gender>
+    <Email>kunal.sinha@email.com</Email>
+    <PhoneNumber>999-111-3333</PhoneNumber>
+  </Student>
+  <Student>
+    <Id>13</Id>
+    <FirstName>Manoj</FirstName>
+    <LastName>Verma</LastName>
+    <DOB>1994-11-22T00:00:00</DOB>
+    <City>234, JKL Street, City, State, PIN</City>
+    <Gender>M</Gender>
+    <Email>manoj.verma@email.com</Email>
+    <PhoneNumber>777-333-2222</PhoneNumber>
+  </Student>
+</Students>

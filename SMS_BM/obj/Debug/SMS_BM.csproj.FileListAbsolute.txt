@@ -1,0 +1,11 @@
+C:\Users\sahil\source\repos\School Management System\SMS_BM\bin\Debug\SMS_BM.dll
+C:\Users\sahil\source\repos\School Management System\SMS_BM\bin\Debug\SMS_BM.pdb
+C:\Users\sahil\source\repos\School Management System\SMS_BM\bin\Debug\SMS_DL.dll
+C:\Users\sahil\source\repos\School Management System\SMS_BM\bin\Debug\SMS_VO.dll
+C:\Users\sahil\source\repos\School Management System\SMS_BM\bin\Debug\SMS_DL.pdb
+C:\Users\sahil\source\repos\School Management System\SMS_BM\bin\Debug\SMS_VO.pdb
+C:\Users\sahil\source\repos\School Management System\SMS_BM\obj\Debug\SMS_BM.csproj.AssemblyReference.cache
+C:\Users\sahil\source\repos\School Management System\SMS_BM\obj\Debug\SMS_BM.csproj.CoreCompileInputs.cache
+C:\Users\sahil\source\repos\School Management System\SMS_BM\obj\Debug\SMS_BM.csproj.Up2Date
+C:\Users\sahil\source\repos\School Management System\SMS_BM\obj\Debug\SMS_BM.dll
+C:\Users\sahil\source\repos\School Management System\SMS_BM\obj\Debug\SMS_BM.pdb
