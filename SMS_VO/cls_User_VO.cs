@@ -26,5 +26,8 @@ namespace SMS_VO
         [Display(Name ="User Type")]
         public string UserType { get; set; }
 
+        [ScaffoldColumn(false)]
+        public string ErrorMessage {  get; set; }
+
     }
 }

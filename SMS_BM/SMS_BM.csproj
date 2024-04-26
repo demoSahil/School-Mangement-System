@@ -44,6 +44,7 @@
     <Compile Include="cls_Student_BM.cs" />
     <Compile Include="cls_TeacherStudent_BM.cs" />
     <Compile Include="cls_Teacher_BM.cs" />
+    <Compile Include="cls_User_BM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

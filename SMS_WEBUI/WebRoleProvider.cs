@@ -1,4 +1,4 @@
-﻿using SMS_DL;
+﻿using SMS_BM;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,10 +10,10 @@ namespace SMS_WEBUI
 {
     public class WebRoleProvider : RoleProvider
     {
-        cls_User_DL _userDL;
+        cls_User_BM _userBM;
         public WebRoleProvider()
         {
-            _userDL=new cls_User_DL(ConfigurationManager.ConnectionStrings["Default"].ConnectionString);
+            _userBM=new cls_User_BM(ConfigurationManager.ConnectionStrings["Default"].ConnectionString);
         }
         public override string ApplicationName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
@@ -44,7 +44,7 @@ namespace SMS_WEBUI
 
         public override string[] GetRolesForUser(string username)
         {
-            return _userDL.GetUserRole(username);
+            return _userBM.GetRolesForUser(username);
         }
 
         public override string[] GetUsersInRole(string roleName)

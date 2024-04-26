@@ -17,6 +17,10 @@ namespace SMS_WEBUI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+          string s=string.Empty;
+          char ch = '\0';
+            
         }
     }
 }

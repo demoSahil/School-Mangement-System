@@ -39,33 +39,37 @@ namespace SMS_DL
                                 Subject = reader["Subject"] as string,
                                 ContactNumber = reader["Contact_Number"] as string,
                             };
-
+                            teacher.studentsIDUnderTeacher=LinkStudentsWithTeacher(teacher.TeacherId);
                             teachers.Add(teacher);
                         }
                     }
                 }
+
+
             }
 
             return teachers;
         }
 
-        public bool InsertTeacherDetails(cls_Teacher_VO teacher)
+        public int? InsertTeacherDetails(cls_Teacher_VO teacher)
         {
 
             using (SqlConnection cnn = new SqlConnection(connectionString))
             {
                 cnn.Open();
-                string query = "INSERT INTO Teachers" +
-                    "(Teacher_Name,Subject,Contact_Number)" +
-                    "VALUES" +
-                    "(@name,@subject,@number)";
+                string query = "INSERT INTO Teachers " +
+               "(Teacher_Name,Subject,Contact_Number) " +
+               "OUTPUT INSERTED.Teacher_ID " +
+               "VALUES " +
+               "(@name,@subject,@number)";
+
                 using (SqlCommand cmd = new SqlCommand(query, cnn))
                 {
                     cmd.Parameters.AddWithValue("name", teacher.TeacherName);
                     cmd.Parameters.AddWithValue("subject", teacher.Subject);
                     cmd.Parameters.AddWithValue("number", teacher.ContactNumber);
 
-                    return cmd.ExecuteNonQuery() > 0;
+                    return (int?)cmd.ExecuteScalar();
                 }
             }
         }
@@ -108,6 +112,30 @@ namespace SMS_DL
             }
         }
 
+        public List<int> LinkStudentsWithTeacher(int? teacherID)
+        {
+            List<int> studentsAssociated = new List<int>();
+            using (SqlConnection cnn = new SqlConnection(connectionString))
+            {
+                cnn.Open();
+                string query = "SELECT S_ID FROM StudentTeachers WHERE T_ID=@id ORDER BY S_ID";
+                using (SqlCommand cmd = new SqlCommand(query, cnn))
+                {
+                    cmd.Parameters.AddWithValue("id", teacherID);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int studentID = Convert.ToInt32(reader["S_ID"]);
+                            studentsAssociated.Add(studentID);
+                        }
+                        return studentsAssociated;
+                    }
+                }
+            }
+        }
+
 
     }
 }
+

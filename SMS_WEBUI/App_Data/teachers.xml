@@ -1,20 +1,49 @@
 <Teachers>
   <Teacher>
-    <Id>1</Id>
-    <Name>Pritam</Name>
-    <Subject>ASP.Net Core</Subject>
-    <Contact>9518856654</Contact>
+    <Id>9</Id>
+    <Name>Kulbhushan</Name>
+    <Subject>a</Subject>
+    <Contact>9i1991</Contact>
+    <StudentAssociated />
   </Teacher>
   <Teacher>
-    <Id>3</Id>
-    <Name>Sahil</Name>
-    <Subject>MERN Stack</Subject>
-    <Contact>7456521454</Contact>
+    <Id>10</Id>
+    <Name>Vinod</Name>
+    <Subject>C#</Subject>
+    <Contact>8745698547</Contact>
+    <StudentAssociated />
   </Teacher>
   <Teacher>
-    <Id>4</Id>
-    <Name>Ayush</Name>
-    <Subject>PHP Laravel</Subject>
-    <Contact>9546545895</Contact>
+    <Id>11</Id>
+    <Name>Abhishek</Name>
+    <Subject>Django </Subject>
+    <Contact>884545154856</Contact>
+    <StudentAssociated />
+  </Teacher>
+  <Teacher>
+    <Id>12</Id>
+    <Name>Chetan</Name>
+    <Subject>F#</Subject>
+    <Contact>97166272891</Contact>
+    <StudentAssociated />
+  </Teacher>
+  <Teacher>
+    <Id>13</Id>
+    <Name>Honey</Name>
+    <Subject>Flutter</Subject>
+    <Contact>97554161717</Contact>
+    <StudentAssociated />
+  </Teacher>
+  <Teacher>
+    <Id>15</Id>
+    <Name>Ashrey</Name>
+    <Subject>Blazor</Subject>
+    <Contact>8345929281</Contact>
+    <StudentAssociated>
+      <StudentId>2</StudentId>
+      <StudentId>10</StudentId>
+      <StudentId>13</StudentId>
+      <StudentId>15</StudentId>
+    </StudentAssociated>
   </Teacher>
 </Teachers>

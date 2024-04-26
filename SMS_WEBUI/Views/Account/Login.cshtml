@@ -10,48 +10,86 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
-    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .box {
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .innerbox {
+            border: 2px solid black;
+            height: 49vh;
+            padding: 101px;
+            background-color: azure;
+            border-radius: 94px;
+            display: flex;
+            gap: 6px;
+        }
+
+        .input-field {
+            border: 0.2px solid black;
+            border-radius: 15px;
+            padding: 8px;
+            font-size: x-small;
+            font-weight: 500;
+        }
+
+        .text-danger {
+            color: red;
+            margin-top: 8px;
+            position: fixed;
+
+            margin-left: 15px;
+        }
+
+        .hidden{
+            display:none;
+        }
+    </style>
 </head>
+
 <body>
 
-    <div class='container body-content'>
+    <div class='box'>
 
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
 
-            <div class="form-horizontal">
+            <div class="innerbox box">
                 <h4>Student Management System</h4>
                 <h5>Login</h5>
-                <hr />
-                <div class="form-group">
-                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                <div class="form-fields">
+                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "" })
+                    <div class="">
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "input-field" } })
                         @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                <div class="form-fields">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "" })
+                    <div class="">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input-field" } })
+                        @Styles.Render("~/Content/css")
                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.UserType, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(model => model.UserType, new SelectList(new List<string>() { "Admin", "Teacher", "Student" }), "Select user type", new { htmlAttributes = new { @class = "form-control" } })
+                <div class="form-fields" style=" margin-top: 8px">
+                    <div class="">
+                        @Html.DropDownListFor(model => model.UserType, new SelectList(new List<string>() { "Admin", "Teacher", "Student" }), "Select user type", new { htmlAttributes = new { @class = "dropDown" } })
                         @Html.ValidationMessageFor(model => model.UserType, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-default" />
+                <div class="form-fields">
+                    <div class="">
+                        <input type="submit" value="Login" class="btn btn-primary" style="margin-top:15px" />
                     </div>
                 </div>
             </div>
@@ -59,6 +97,49 @@
 
         <div>
             @Html.ActionLink("Click here to Sign Up", "SignUp")
+        </div>
+
+        <div class='box hidden'>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="innerbox box">
+                    <h4>Student Management System</h4>
+                    <h5>Login</h5>
+                    <div class="form-fields">
+                        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "" })
+                        <div class="">
+                            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "input-field" } })
+                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-fields">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "" })
+                        <div class="">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input-field" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-fields" style=" margin-top: 8px">
+                        <div class="">
+                            @Html.DropDownListFor(model => model.UserType, new SelectList(new List<string>() { "Admin", "Teacher", "Student" }), "Select user type", new { htmlAttributes = new { @class = "dropDown" } })
+                            @Html.ValidationMessageFor(model => model.UserType, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-fields">
+                        <div class="">
+                            <input type="submit" value="Login" class="btn btn-primary" style="margin-top:15px" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+
         </div>
     </div>
     @Scripts.Render("~/bundles/jquery")

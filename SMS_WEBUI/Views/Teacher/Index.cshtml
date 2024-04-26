@@ -37,6 +37,10 @@
             @Html.DisplayNameFor(model => model.ContactNumber)
         </th>
 
+        <th>
+            Number of Students Linked With Teacher
+        </th>
+
         <th></th>
     </tr>
     <tbody id="table-body">
@@ -57,6 +61,8 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.ContactNumber)
                 </td>
+
+                <td><a href="/Teacher/StudentsLinkedWithTeacher?teacherId=@item.TeacherId&teacherName=@item.TeacherName">@item.studentsIDUnderTeacher.Count </a></td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.TeacherId }) |
                     @Html.ActionLink("Details", "Details", new { id = item.TeacherId }) |

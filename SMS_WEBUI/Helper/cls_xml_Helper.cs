@@ -85,8 +85,18 @@ namespace SMS_WEBUI.Helper
                    new XElement("Name", teacher.TeacherName),
                    new XElement("Subject", teacher.Subject),
                    new XElement("Contact", teacher.ContactNumber)
+
                     );
 
+                XElement students = new XElement("StudentAssociated");
+
+                foreach (int studentId in teacher.studentsIDUnderTeacher)
+                {
+                    XElement studentsIDAssociated = new XElement("StudentId", studentId);
+
+                    students.Add(studentsIDAssociated);
+                }
+                element.Add(students);
                 rootElement.Add(element);
             }
 
@@ -101,15 +111,24 @@ namespace SMS_WEBUI.Helper
             List<cls_Teacher_VO> _teachers = new List<cls_Teacher_VO>();
             XDocument xml = XDocument.Load(filePath);
 
-            foreach (XElement element in xml.Root.Elements("Teacher"))
+            foreach (XElement teacherElement in xml.Root.Elements("Teacher"))
             {
                 cls_Teacher_VO teacher = new cls_Teacher_VO()
                 {
-                    TeacherId = Convert.ToInt32(element.Element("Id").Value),
-                     TeacherName= element.Element("Name").Value,
-                    Subject = element.Element("Subject").Value,
-                    ContactNumber= element.Element("Contact").Value,
+                    TeacherId = Convert.ToInt32(teacherElement.Element("Id").Value),
+                    TeacherName = teacherElement.Element("Name").Value,
+                    Subject = teacherElement.Element("Subject").Value,
+                    ContactNumber = teacherElement.Element("Contact").Value,
                 };
+
+                // Get all <StudentId> elements within the current <Teacher> element
+                IEnumerable<XElement> studentElements = teacherElement.Element("StudentAssociated").Elements("StudentId");
+
+                foreach (XElement studentElement in studentElements)
+                {
+                    teacher.studentsIDUnderTeacher.Add(Convert.ToInt32(studentElement.Value));
+                }
+
                 _teachers.Add(teacher);
             }
             return _teachers;

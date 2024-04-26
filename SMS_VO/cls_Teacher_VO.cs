@@ -10,18 +10,31 @@ namespace SMS_VO
     public class cls_Teacher_VO
     {
         [Key]
-        public int TeacherId {  get; set; }
+        public int TeacherId { get; set; }
 
-        [Required(ErrorMessage ="Teacher name is an required field")]
+        [Required(ErrorMessage = "Teacher name is an required field")]
+        [Display(Name = "Teacher Name")]
         public string TeacherName { get; set; }
-        
+
         [Required(ErrorMessage = "Subject is an required field")]
-        public string Subject {  get; set; }
+        [Display(Name = "Subject")]
+        public string Subject { get; set; }
 
         [DataType(DataType.PhoneNumber)]
-        public string ContactNumber {  get; set; }
+        [Display(Name = "Contact Number")]
+        public string ContactNumber { get; set; }
 
         [ScaffoldColumn(false)]
-        public string ErrorMessage {  get; set; }
+        public string ErrorMessage { get; set; }
+
+        [ScaffoldColumn(false)]
+        public List<int> studentsIDUnderTeacher { get; set; }
+
+        public cls_Teacher_VO()
+        {
+            studentsIDUnderTeacher = new List<int>();
+        }
+
+
     }
 }

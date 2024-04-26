@@ -46,24 +46,34 @@ namespace SMS_BM
             return true;
 
         }
-        public bool Add(cls_Teacher_VO teacher)
+        public bool Add(cls_Teacher_VO teacher, string[] studentIds)
         {
             if (IsValid(teacher))
             {
-                if (_dl.InsertTeacherDetails(teacher))
+                int? newTeacherID = _dl.InsertTeacherDetails(teacher);
+                if (newTeacherID != null && newTeacherID > 0)
                 {
-                    return true;
-                }
+                    if (_TeacherStudentBM.MapStudents(studentIds, newTeacherID))
+                    {
+                        return true;
+                    }
+                } // Success
             }
 
             return false;
         }
 
-        public bool Edit(cls_Teacher_VO teacher)
+        public bool Edit(cls_Teacher_VO teacher, string[] studentIDs)
         {
             if (IsValid(teacher))
             {
-                if (_dl.UpdateTeacherDetails(teacher)) return true;
+                if (_dl.UpdateTeacherDetails(teacher))
+                {
+                    if (_TeacherStudentBM.UpdateStudentsMapping(studentIDs, teacher.TeacherId))
+                    {
+                        return true;
+                    }
+                }
             }
 
             return false;
@@ -76,14 +86,10 @@ namespace SMS_BM
         /// <returns> True when Teacher get Deleted Successfully otherwise false</returns>
         public bool Delete(int? id)
         {
-            // Check whether students assigned to any teacher
-            if (_TeacherStudentBM.CanDeleteTeacherDetails(id))
+            //Proceed with delete and return true
+            if (_TeacherStudentBM.DeleteStudentsMapping(id) && _dl.DeleteTeacherDetails(id))
             {
-                //Proceed with delete and return true
-                if (_dl.DeleteTeacherDetails(id))
-                {
-                    return true;
-                }
+                return true;
             }
 
             return false;
@@ -93,5 +99,22 @@ namespace SMS_BM
         {
             return _dl.GetAllTeachersList();
         }
+
+        public List<cls_Student_VO> GetListOfStudentsUnderTeacher(int? id)
+        {
+            return _TeacherStudentBM.StudentsLinkedWithTeacher(id);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> false if there are any students Assigned</returns>
+        public bool CheckingAnyStudentsAssignedToTeacher(int? id)
+        {
+            return _TeacherStudentBM.CanDeleteTeacherDetails(id);
+        }
+
+
     }
 }

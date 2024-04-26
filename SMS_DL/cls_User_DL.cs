@@ -49,17 +49,29 @@ namespace SMS_DL
                         byte[] enteredPassword = Hash(user.Password);
                         while (reader.Read())
                         {
-                            byte[] storedPpassword = reader["Password"] as byte[];
-                            if (enteredPassword.SequenceEqual(storedPpassword))
+                            byte[] storedPassword = reader["Password"] as byte[];
+                            string userType = reader["UserType"] as string;
+                            if (enteredPassword.SequenceEqual(storedPassword))
                             {
-                                return true;
+                                if (userType == user.UserType)
+                                {
+                                    return true;
+                                }
+                                user.ErrorMessage = "Invalid User Type";
+                                return false;
                             }
-                            return false;
+
+                            else
+                            {
+                                user.ErrorMessage = "Invalid Password";
+                                return false;
+                            }
 
                         }
                     }
                 }
 
+                user.ErrorMessage = "Invalid Username";
                 return false;
             }
         }

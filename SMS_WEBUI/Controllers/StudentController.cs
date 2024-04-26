@@ -1,5 +1,4 @@
 ﻿using SMS_BM;
-using SMS_DL;
 using SMS_VO.Models;
 using SMS_WEBUI.Helper;
 using System;
@@ -35,7 +34,7 @@ namespace SMS_WEBUI.Controllers
             _xml = new cls_xml_Helper();
         }
 
-        
+
         public ActionResult Index()
         {
             // Retrieving Students Records
@@ -44,10 +43,11 @@ namespace SMS_WEBUI.Controllers
             // Updating XML DOC
             _xml.ConvertToXml(students, Server.MapPath("~/App_Data/students.xml"));
 
+
             return View(students);
         }
 
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         //[AJAX] GET /Home/Delete?id={id}
         public ActionResult Delete(int? studentId)
         {
@@ -95,7 +95,7 @@ namespace SMS_WEBUI.Controllers
             return View();
         }
         public ActionResult Edit(int? id)
-        {           
+        {
             // Retrieving Students Records
             List<cls_Student_VO> students = _xml.ParseToList(Server.MapPath("~/App_Data/students.xml"));
 
@@ -114,6 +114,13 @@ namespace SMS_WEBUI.Controllers
 
             return View();
         }
+
+        public ActionResult GetStudentsList()
+        {
+            List<cls_Student_VO> students= _xml.ParseToList(Server.MapPath("~/App_Data/students.xml"));
+            return Json(students, JsonRequestBehavior.AllowGet);
+        }
+        
 
     }
 }

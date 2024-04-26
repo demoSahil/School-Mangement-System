@@ -72,6 +72,7 @@ function Searching() {
     xhr.send();
 }
 
+// Rendering Data into Table
 function RenderDataIntoTable(data) {
     tableBody.innerHTML = "";
     let str = "";
@@ -81,6 +82,11 @@ function RenderDataIntoTable(data) {
             '<td>' + d.TeacherName + '</td>' +
             '<td>' + d.Subject + '</td>' +
             '<td>' + d.ContactNumber + '</td>' +
+            '<td><a href="/Teacher/StudentsLinkedWithTeacher?teacherId=' +
+            d.TeacherId +
+            '&teacherName=' + d.TeacherName +
+            '">' + d.studentsIDUnderTeacher.length +
+            '</a></td>' +
             '<td> <a href="/Teacher/Edit/' + d.TeacherId + '">Edit</a>' +
             ' | ' +
             '<a href="/Teacher/Details/' + d.TeacherId + '">Details</a>' +
@@ -89,7 +95,6 @@ function RenderDataIntoTable(data) {
             '</td>' +
             '</tr>';
     });
-    console.log(str);
-    tableBody.innerHTML = str; k
+    tableBody.innerHTML = str; 
 
 }

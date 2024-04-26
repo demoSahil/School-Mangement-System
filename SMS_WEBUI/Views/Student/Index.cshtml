@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
     ViewData["ToastMessage"] = TempData["_ToastMessage"];
+    string teacherName = ViewData["TeacherName"] as string;
 }
 <style>
     .crud {
@@ -30,8 +31,14 @@
 @{
     Html.RenderPartial("_Toaster", ViewData["ToastMessage"]);
 }
-<h2>Students List</h2>
 
+@{
+    if (!string.IsNullOrEmpty(teacherName))
+    {
+        <h1> Faculty Name - @teacherName </h1>
+    }
+}
+<h2>Students List</h2>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -94,9 +101,9 @@
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }, new { @class = "crud" })
-                @Html.ActionLink("Details", "Details", new { id = item.StudentID }, new { @class = "crud" })
-                @Html.ActionLink("Delete", "Delete", new { }, new { @class = "crud delete-btn", id = item.StudentID })
+                @Html.ActionLink("Edit", "Edit", "Student", new { id = item.StudentID }, new { @class = "crud" })
+                @Html.ActionLink("Details", "Details", "Student", new { id = item.StudentID }, new { @class = "crud" })
+                @Html.ActionLink("Delete", "Delete", "Student", new { }, new { @class = "crud delete-btn", id = item.StudentID })
             </td>
         </tr>
     }

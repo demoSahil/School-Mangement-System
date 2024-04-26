@@ -1,5 +1,5 @@
-﻿using SMS_BM;
-using SMS_DL;
+﻿
+using SMS_BM;
 using SMS_VO;
 using SMS_VO.Models;
 using SMS_WEBUI.Helper;
@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.Mvc;
 
@@ -53,11 +54,12 @@ namespace SMS_WEBUI.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult Create(cls_Teacher_VO teacher)
+        public ActionResult Create(cls_Teacher_VO teacher, string[] selectedStudents)
         {
+            string[] studentIds = GetStudentIDSFromString(selectedStudents);
             try
             {
-                if (_teacherBM.Add(teacher))
+                if (_teacherBM.Add(teacher, studentIds))
                 {
                     TempData["_ToastMessage"] = "Teacher Details Added Successfully";
                     return RedirectToAction("Index");
@@ -85,11 +87,11 @@ namespace SMS_WEBUI.Controllers
         // POST: Teacher/Edit/5
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit(cls_Teacher_VO updatedTeacher)
+        public ActionResult Edit(cls_Teacher_VO updatedTeacher, string[] selectedStudents)
         {
             try
             {
-                if (_teacherBM.Edit(updatedTeacher))
+                if (_teacherBM.Edit(updatedTeacher,GetStudentIDSFromString(selectedStudents)))
                 {
                     TempData["_ToastMessage"] = "Teacher Details Updated Successfully";
                     return RedirectToAction("Index");
@@ -102,12 +104,17 @@ namespace SMS_WEBUI.Controllers
             }
         }
         // [AJAX]GET: Teacher/Delete/5
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? teacherId)
         {
             bool _flag = false;
             bool alreadyMappedWithStudent = false;
 
+       /*     if (!_teacherBM.CheckingAnyStudentsAssignedToTeacher(teacherId))
+            {
+                return Content("confirmDelete");
+            }*/
+            //if yes
             if (_teacherBM.Delete(teacherId))
             {
                 // Retrieving Students Records
@@ -117,34 +124,64 @@ namespace SMS_WEBUI.Controllers
                 _xml.ConvertToXml_Teachers(teachers, Server.MapPath("~/App_Data/teachers.xml"));
                 _flag = true;
             } // Success
+
+            //if no
             else
             {
                 alreadyMappedWithStudent = true;
             }
+
             return Json(new
             {
                 flag = _flag,
                 mapped = alreadyMappedWithStudent
             }, JsonRequestBehavior.AllowGet);
-        }
+            }
 
 
         //AJAX GET: Teacher/Search?value
         public ActionResult Search(string value)
         {
 
-            value=value.ToLower();
+            value = value.ToLower();
             List<cls_Teacher_VO> teachers = _xml.ParseToList_Teacher(Server.MapPath("~/App_Data/teachers.xml"));
 
-            List<cls_Teacher_VO> result=teachers.Where(t=>
-            t.TeacherId.ToString().Contains(value) || 
-            t.TeacherName.ToString().ToLower().Contains(value)||
+            List<cls_Teacher_VO> result = teachers.Where(t =>
+            t.TeacherId.ToString().Contains(value) ||
+            t.TeacherName.ToString().ToLower().Contains(value) ||
             t.Subject.ToLower().Contains(value) ||
             t.ContactNumber.Contains(value)).ToList();
 
-            return Json(result,JsonRequestBehavior.AllowGet);
+            return Json(result, JsonRequestBehavior.AllowGet);
 
         }
+
+        public ActionResult StudentsLinkedWithTeacher(int? teacherId, string teacherName, bool returnJson = false)
+        {
+            ViewData["TeacherName"] = teacherName;
+            if (returnJson)
+            {
+                return Json(_teacherBM.GetListOfStudentsUnderTeacher(teacherId), JsonRequestBehavior.AllowGet);
+            }
+            return View("~/Views/Student/Index.cshtml", _teacherBM.GetListOfStudentsUnderTeacher(teacherId));
+        }
+
+
+        public string[] GetStudentIDSFromString(string[] studentList)
+        {
+            string[] result = new string[studentList.Length];
+
+            for (int i = 0; i < studentList.Length; i++)
+            {
+                int closeBracket = studentList[i].LastIndexOf(']');
+                int openBracket = studentList[i].LastIndexOf('[');
+
+                result[i] = studentList[i].Substring(openBracket + 1, closeBracket - openBracket - 1);
+            }
+
+            return result;
+        }
+
 
     }
 }

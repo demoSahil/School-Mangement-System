@@ -1,4 +1,5 @@
 ﻿using SMS_DL;
+using SMS_VO.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,26 @@ namespace SMS_BM
                 return true;
             }
             return false;
+        }
+
+        public List<cls_Student_VO> StudentsLinkedWithTeacher(int? id)
+        {
+            return _dl.GetStudentsUnderTeacher(id);
+        }
+
+        public bool MapStudents(string[] studentIds, int? teacherID)
+        {
+            return _dl.MapStudentWithTeacher(studentIds, teacherID);
+        }
+
+        public bool UpdateStudentsMapping(string[] studentIds, int? teacherID)
+        {
+            return _dl.UpdateMapping(studentIds, teacherID);
+        }
+
+        public bool DeleteStudentsMapping(int? teacherID)
+        {
+            return _dl.DeleteMapping(teacherID);
         }
     }
 }

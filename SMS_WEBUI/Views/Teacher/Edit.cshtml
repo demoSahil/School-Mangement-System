@@ -3,11 +3,14 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/jqueryval")
 
-
+<!-- Include Selectize CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/css/selectize.min.css" rel="stylesheet" />
+<!-- Include Selectize JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.min.js"></script>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Edit Teacher Details</h4>
         <hr />
@@ -39,12 +42,86 @@
         </div>
 
         <div class="form-group">
+            <label> Students Under Teacher</label>
+            <select id="userSelect" teacher-id="@Model.TeacherId" multiple="multiple" name="selectedStudents"></select>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
+<script>
+
+    let usernames = [];
+    function FetchAllStudents() {
+        /**    Array which consist of objects which represents student entity    */
+        let studentsList = [];
+
+        // Getting Students Names List
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', '/Student/GetStudentsList', false);
+        xhr.onload = () => {
+            if (xhr.readyState == xhr.DONE) {
+                if (xhr.status === 200)
+                studentsList = JSON.parse(xhr.response);
+                usernames = studentsList.map((s) => {
+                    return s.FirstName + " " + s.LastName + " [" + s.StudentID + "]";
+                });
+
+
+            }
+            else {
+                console.error("Failed to fetch student list.");
+            }
+        };
+        xhr.send();
+    }
+
+    function FetchSelectedStudents() {
+        let selectedStudents = [];
+        /**    Array which consist of objects which represents student entity    */
+        let teacherId = document.getElementById('userSelect').getAttribute('teacher-id');
+        // Getting Students Names List
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', '/Teacher/StudentsLinkedWithTeacher?TeacherId=' + teacherId + '&returnJson=true', false);
+        xhr.onload = () => {
+            if (xhr.readyState == xhr.DONE) {
+                if (xhr.status === 200)
+                studentsList = JSON.parse(xhr.response);
+                selectedStudents = studentsList.map((s) => {
+                    return s.FirstName + " " + s.LastName + " [" + s.StudentID + "]";
+                });
+                populateDropdown(selectedStudents);
+
+
+            }
+            else {
+                console.error("Failed to fetch student list.");
+            }
+        };
+        xhr.send();
+
+
+    }
+
+    function populateDropdown(selectedStudents) {
+        $('#userSelect').selectize({
+            plugins: ['remove_button'],
+            delimiter: ',',
+            persist: false,
+            options: usernames.map(username => ({ value: username, text: username })),
+            placeholder: 'Select Students...',
+            items: selectedStudents
+        });
+    }
+
+    FetchAllStudents();
+    FetchSelectedStudents();
+
+</script>
 
 <div>
     @Html.ActionLink("Back to List", "Index")
