@@ -30,6 +30,7 @@ namespace SMS_WEBUI.Controllers
             if (_userBM.Authenticate(user))
             {
                 FormsAuthentication.SetAuthCookie(user.UserName, false);
+                Session["Id"] = user.UserID.ToString();
                 return RedirectToAction("Index", "Student");
             }
             string userType = user.UserType;
@@ -37,7 +38,7 @@ namespace SMS_WEBUI.Controllers
             {
                 case string s when s.Contains("name"):
                     ModelState.AddModelError("UserName", user.ErrorMessage);
-                        break;
+                    break;
 
                 case string s when s.Contains("password"):
                     ModelState.AddModelError("Password", user.ErrorMessage);
@@ -59,8 +60,22 @@ namespace SMS_WEBUI.Controllers
 
         public ActionResult SignUp()
         {
+            return View( new cls_User_VO());
+        }
+
+        [HttpPost]
+        public ActionResult SignUp(cls_User_VO newUser)
+        {
+
+            if (ModelState.IsValid && _userBM.Add(newUser))
+            {
+                TempData["_ToastMessage"] = "User Added Successfully";
+                return RedirectToAction("Login");
+            }
+
             return View();
         }
+
 
 
 

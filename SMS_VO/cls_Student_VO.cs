@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -28,6 +29,10 @@ namespace SMS_VO.Models
         [Display(Name = "Date of birth")]
         public DateTime? DOB { get; set; }
 
+        [Display(Name ="Student class")]
+        [Required]
+        public Enum Class { get; set; }
+
         public string City { get; set; }
 
         [Required(ErrorMessage = "Gender must be specified")]
@@ -37,7 +42,6 @@ namespace SMS_VO.Models
         [Required(ErrorMessage ="Email address is Required")]
         public string Email { get; set; }
 
-        [Phone(ErrorMessage ="Contact Number is not valid")]
         [Display(Name = "Contact number")]
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }

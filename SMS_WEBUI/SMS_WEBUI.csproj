@@ -35,9 +35,9 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptTarget>ES2015</TypeScriptTarget>
     <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
-    <TypeScriptModuleKind />
+    <TypeScriptModuleKind>ES6</TypeScriptModuleKind>
     <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
     <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
     <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
@@ -59,6 +59,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.3.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis, Version=1.68.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.68.0\lib\net462\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.68.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.68.0\lib\net462\Google.Apis.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Core, Version=1.68.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.68.0\lib\net462\Google.Apis.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Gmail.v1, Version=1.68.0.3399, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Gmail.v1.1.68.0.3399\lib\net462\Google.Apis.Gmail.v1.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNetCore.Antiforgery, Version=1.0.3.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNetCore.Antiforgery.1.0.3\lib\net451\Microsoft.AspNetCore.Antiforgery.dll</HintPath>
     </Reference>
@@ -240,11 +255,17 @@
     <Reference Include="Microsoft.Net.Http.Headers, Version=1.0.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Net.Http.Headers.1.0.2\lib\netstandard1.1\Microsoft.Net.Http.Headers.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.EJ, Version=20.4.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>..\packages\Syncfusion.EJ.20.4.0.43\lib\net451\Syncfusion.EJ.dll</HintPath>
+    <Reference Include="MimeKit, Version=4.5.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
+      <HintPath>..\packages\MimeKit.4.5.0\lib\net47\MimeKit.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Licensing, Version=20.4460.0.43, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Syncfusion.Licensing.20.4.0.43\lib\net46\Syncfusion.Licensing.dll</HintPath>
+    <Reference Include="RouteDebugger, Version=2.1.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\routedebugger.2.1.5\lib\net40\RouteDebugger.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.EJ2, Version=25.1.42.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.EJ2.MVC5.25.1.42\lib\net45\Syncfusion.EJ2.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=25.1462.42.0, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.25.1.42\lib\net462\Syncfusion.Licensing.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -252,8 +273,11 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Buffers, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Buffers.4.0.0\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CodeDom, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.CodeDom.7.0.0\lib\net462\System.CodeDom.dll</HintPath>
     </Reference>
     <Reference Include="System.Collections.Immutable, Version=1.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.1.2.0\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
@@ -319,7 +343,14 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Reflection, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Reflection.4.1.0\lib\net462\System.Reflection.dll</HintPath>
       <Private>True</Private>
@@ -332,6 +363,9 @@
       <HintPath>..\packages\System.Runtime.4.1.0\lib\net462\System.Runtime.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.Extensions.4.1.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
@@ -472,9 +506,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\A_Students\A_StudentsAreaRegistration.cs" />
+    <Compile Include="Areas\A_Teachers\A_TeachersAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\StudentController.cs" />
-    <Compile Include="Controllers\TeacherController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\MailController.cs" />
+    <Compile Include="Areas\A_Students\Controllers\StudentController.cs" />
+    <Compile Include="Areas\A_Teachers\Controllers\TeacherController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -499,6 +537,31 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\ej2\bootstrap-dark.css" />
+    <Content Include="Content\ej2\bootstrap.css" />
+    <Content Include="Content\ej2\bootstrap4.css" />
+    <Content Include="Content\ej2\bootstrap5-dark.css" />
+    <Content Include="Content\ej2\bootstrap5.css" />
+    <Content Include="Content\ej2\compatibility\bootstrap.css" />
+    <Content Include="Content\ej2\compatibility\bootstrap4.css" />
+    <Content Include="Content\ej2\compatibility\fabric.css" />
+    <Content Include="Content\ej2\compatibility\highcontrast.css" />
+    <Content Include="Content\ej2\compatibility\material.css" />
+    <Content Include="Content\ej2\customized\material-dark.css" />
+    <Content Include="Content\ej2\customized\material.css" />
+    <Content Include="Content\ej2\customized\tailwind-dark.css" />
+    <Content Include="Content\ej2\customized\tailwind.css" />
+    <Content Include="Content\ej2\fabric-dark.css" />
+    <Content Include="Content\ej2\fabric.css" />
+    <Content Include="Content\ej2\fluent-dark.css" />
+    <Content Include="Content\ej2\fluent.css" />
+    <Content Include="Content\ej2\highcontrast.css" />
+    <Content Include="Content\ej2\material-dark.css" />
+    <Content Include="Content\ej2\material.css" />
+    <Content Include="Content\ej2\material3-dark.css" />
+    <Content Include="Content\ej2\material3.css" />
+    <Content Include="Content\ej2\tailwind-dark.css" />
+    <Content Include="Content\ej2\tailwind.css" />
     <Content Include="Content\ej\mobile\android-theme\ej.mobile.android-core.css" />
     <Content Include="Content\ej\mobile\android-theme\ej.mobile.android-core.min.css" />
     <Content Include="Content\ej\mobile\android-theme\ej.mobile.android.css" />
@@ -906,9 +969,24 @@
     <Content Include="Content\ej\mobile\images\ejmmobilefonts.woff" />
     <Content Include="Content\ej\mobile\images\ejmmobilefonts.ttf" />
     <Content Include="Content\ej\mobile\images\ejmmobilefonts.eot" />
+    <Content Include="App_Data\credentials.json" />
+    <Content Include="libman.json" />
+    <Content Include="Scripts\ej2\ej2-pdfviewer-lib\pdfium.js" />
+    <Content Include="Scripts\ej2\ej2-pdfviewer-lib\pdfium.wasm" />
+    <Content Include="Content\ej2\compatibility\material.scss" />
+    <Content Include="Content\ej2\compatibility\highcontrast.scss" />
+    <Content Include="Content\ej2\compatibility\fabric.scss" />
+    <Content Include="Content\ej2\compatibility\bootstrap4.scss" />
+    <Content Include="Content\ej2\compatibility\bootstrap.scss" />
+    <Content Include="Areas\A_Students\Views\Student\xxx.cshtml" />
+    <Content Include="Areas\A_Students\Views\web.config" />
+    <Content Include="Areas\A_Students\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\A_Teachers\Views\web.config" />
+    <Content Include="Areas\A_Teachers\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <None Include="Scripts\ej\web\ej.web.all.min.intellisense.js" />
     <None Include="Scripts\ej\web\ej.web.all-vsdoc.js" />
+    <Content Include="Scripts\ej2\ej2.min.js" />
     <Content Include="Scripts\ej\common\ej.core.min.js" />
     <Content Include="Scripts\ej\common\ej.data.min.js" />
     <Content Include="Scripts\ej\common\ej.draggable.min.js" />
@@ -1067,20 +1145,23 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Student\About.cshtml" />
-    <Content Include="Views\Student\Contact.cshtml" />
-    <Content Include="Views\Student\Index.cshtml" />
-    <Content Include="Views\Student\Create.cshtml" />
+    <Content Include="Areas\A_Students\Views\Student\About.cshtml" />
+    <Content Include="Areas\A_Students\Views\Student\Contact.cshtml" />
+    <Content Include="Areas\A_Students\Views\Student\Index.cshtml" />
+    <Content Include="Areas\A_Students\Views\Student\Create.cshtml" />
     <Content Include="Views\Shared\_Toaster.cshtml" />
-    <Content Include="Views\Student\Edit.cshtml" />
+    <Content Include="Areas\A_Students\Views\Student\Edit.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Teacher\Index.cshtml" />
-    <Content Include="Views\Teacher\Details.cshtml" />
-    <Content Include="Views\Teacher\Create.cshtml" />
-    <Content Include="Views\Teacher\Edit.cshtml" />
+    <Content Include="Areas\A_Teachers\Views\Teacher\Index.cshtml" />
+    <Content Include="Areas\A_Teachers\Views\Teacher\Details.cshtml" />
+    <Content Include="Areas\A_Teachers\Views\Teacher\Create.cshtml" />
+    <Content Include="Areas\A_Teachers\Views\Teacher\Edit.cshtml" />
+    <Content Include="Views\Mail\MailIndex.cshtml" />
+    <Content Include="Views\Account\SignUp.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <TypeScriptCompile Include="Scripts\ej2\ej2.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -1122,6 +1203,18 @@
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\A_Students\Data\" />
+    <Folder Include="Areas\A_Students\Views\Shared\" />
+    <Folder Include="Areas\A_Teachers\Data\" />
+    <Folder Include="Areas\A_Teachers\Views\Shared\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

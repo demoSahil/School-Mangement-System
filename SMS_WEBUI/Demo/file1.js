@@ -55,17 +55,17 @@ var Dog = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Dog.prototype.sound = function () {
-        return "Woof!";
+        return " Dog Sound!";
     };
     return Dog;
 }(Animal));
-var myDog = new Dog("Buddy");
+var myDog = new Dog("xyz");
 console.log(myDog.sound());
 // Generics
 function identity(arg) {
     return arg;
 }
-var result = identity("Hello, Generics!");
+var result = identity("Hello World!");
 console.log(result);
 // Enums
 var Direction;
@@ -77,3 +77,4 @@ var Direction;
 })(Direction || (Direction = {}));
 var userDirection = Direction.Up;
 console.log(userDirection);
+console.log("hello");

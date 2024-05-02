@@ -81,3 +81,5 @@ enum Direction {
 
 let userDirection: Direction = Direction.Up;
 console.log(userDirection); 
+
+console.log("hello");

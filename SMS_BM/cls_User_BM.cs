@@ -17,7 +17,11 @@ namespace SMS_BM
         {
             _userDL = new cls_User_DL(connectionString);
         }
-
+        
+        public bool Add(cls_User_VO user)
+        {
+            return _userDL.AddUser(user);
+        }
         public string[] GetRolesForUser(string userName)
         {
             return _userDL.GetUserRole(userName);

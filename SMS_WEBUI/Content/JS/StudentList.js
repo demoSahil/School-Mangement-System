@@ -6,7 +6,7 @@ deleteBtns.forEach(btn => {
 
         console.log("delete clicked for" + v);
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', "Student/Delete?studentId=" + btn.getAttribute('id'), true);
+        xhr.open('GET', "/A_Students/Student/Delete?studentId=" + btn.getAttribute('id'), true);
         xhr.onload = () => {
             if (xhr.status === 200) {
                 var responsee = JSON.parse(xhr.response);

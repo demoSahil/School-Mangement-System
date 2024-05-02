@@ -1,0 +1,140 @@
+﻿@model IEnumerable<SMS_VO.cls_Teacher_VO>
+@{
+    ViewBag.Title = "Teacher's List";
+    ViewData["ToastMessage"] = TempData["_ToastMessage"];
+}
+
+@{
+    Html.RenderPartial("_Toaster", ViewData["ToastMessage"]);
+}
+
+
+
+<style>
+
+    td, th {
+        border-left: 1.5px solid black;
+        border-bottom: 1.5px solid black;
+    }
+
+    th {
+        border-top: 1.5px solid black;
+    }
+
+    .empty-th {
+        border-right: 1.5px solid black;
+    }
+
+    .crud {
+        text-decoration: white;
+        color: white;
+        background-color: darkblue;
+        font-weight: bolder;
+        border: 1px solid white;
+        border-radius: 0.2rem;
+        padding: 3px;
+        margin: 0.1rem;
+    }
+
+        .crud:hover {
+            text-decoration: none;
+            color: darkgrey;
+        }
+
+    .delete-btn {
+        background-color: crimson;
+    }
+
+    .create-new {
+        border: 1.5px solid black;
+        border-radius: 4px;
+        text-decoration: none;
+        color: black;
+        padding: 0.2rem;
+        background-color: darkgray;
+    }
+
+        .create-new:hover {
+            background-color: gray;
+            color: black;
+        }
+    #search {
+        float: right;
+        border-radius: 30px;
+        display: flex;
+        border: 2px solid black;
+        margin-top: 62px;
+        margin-bottom: 1rem;
+    }
+
+    #canvas-container {
+        width: 20vw;
+        height: 20vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        float: right;
+    }
+</style>
+<input type="search" id="search" />
+<h2>Teacher List</h2>
+
+<p>
+    @Html.ActionLink("Create", "Create", new { }, new {@class="create-new"})
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TeacherId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeacherName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactNumber)
+        </th>
+
+        <th>
+            Students Count Under Teacher
+        </th>
+
+        <th class="empty-th"></th>
+    </tr>
+    <tbody id="table-body">
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td class="student-id" id=@item.TeacherId>
+                    @Html.DisplayFor(modelItem => item.TeacherId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeacherName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactNumber)
+                </td>
+
+                <td><a href="/A_Teachers/Teacher/StudentsLinkedWithTeacher?teacherId=@item.TeacherId&teacherName=@item.TeacherName">@item.studentsIDUnderTeacher.Count </a></td>
+                <td class="flex-md-row empty-th">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TeacherId, area = "A_Teachers" }, new {@class = "crud link-white" }) 
+                    @Html.ActionLink("Details", "Details", new { id = item.TeacherId, area = "A_Teachers" },new {@class="crud"}) 
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TeacherId,area= "A_Teachers" }, new { @class = " crud delete-btn", id = item.TeacherId })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@Scripts.Render("~/Content/JS/TeacherList.js")

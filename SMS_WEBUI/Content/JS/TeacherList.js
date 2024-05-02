@@ -6,7 +6,7 @@ deleteBtns.forEach(btn => {
 
         console.log("delete clicked for" + v);
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', "Teacher/Delete?teacherId=" + btn.getAttribute('id'), true);
+        xhr.open('GET', "/A_Teachers/Teacher/Delete?teacherId=" + btn.getAttribute('id'), true);
         xhr.onload = () => {
             if (xhr.status === 200) {
                 var responsee = JSON.parse(xhr.response);
@@ -57,7 +57,7 @@ searchBar.addEventListener('input', () => Searching());
 function Searching() {
     const xhr = new XMLHttpRequest();
 
-    xhr.open('GET', 'Teacher/Search?value=' + searchBar.value, true);
+    xhr.open('GET', '/A_Teachers/Teacher/Search?value=' + searchBar.value, true);
 
     xhr.onload = () => {
         if (xhr.status === 200) {
@@ -82,19 +82,21 @@ function RenderDataIntoTable(data) {
             '<td>' + d.TeacherName + '</td>' +
             '<td>' + d.Subject + '</td>' +
             '<td>' + d.ContactNumber + '</td>' +
-            '<td><a href="/Teacher/StudentsLinkedWithTeacher?teacherId=' +
+            '<td><a href="/A_Teachers/Teacher/StudentsLinkedWithTeacher?teacherId=' +
             d.TeacherId +
             '&teacherName=' + d.TeacherName +
             '">' + d.studentsIDUnderTeacher.length +
             '</a></td>' +
-            '<td> <a href="/Teacher/Edit/' + d.TeacherId + '">Edit</a>' +
+            '<td> <a href="/A_Teachers/Teacher/Edit/' + d.TeacherId + '">Edit</a>' +
             ' | ' +
-            '<a href="/Teacher/Details/' + d.TeacherId + '">Details</a>' +
+            '<a href="/A_Teachers/Teacher/Details/' + d.TeacherId + '">Details</a>' +
             ' | ' +
-            '<a href="/Teacher/Delete/' + d.TeacherId + '">Delete</a>' +
+            '<a href="/A_Teachers/Teacher/Delete/' + d.TeacherId + '">Delete</a>' +
             '</td>' +
             '</tr>';
     });
     tableBody.innerHTML = str; 
 
 }
+
+

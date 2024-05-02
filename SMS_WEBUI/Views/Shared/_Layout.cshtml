@@ -3,38 +3,114 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - SMS</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .teacher-section-dropdown:hover .dropdown-content {
+            display: flex;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+            z-index: 1;
+            background-color: white;
+            border-radius: 0.8rem;
+            color: black;
+            margin-top: 0.5rem;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+            .dropdown-content a {
+                color: black;
+                text-decoration: none;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: lightgray;
+                    border-radius: 0.8rem;
+                    padding: 2px;
+                }
+    </style>
 </head>
 <body>
+    <h1>@Session["Id"]</h1>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-        <div class="container">
-            @Html.ActionLink("School Management System", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Students's Section", "Index", "Student", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Teacher's Section", "Index", "Teacher", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Logout", "Logout", "Account", new { area = "" }, new { @class = "nav-link " })</li>
-                </ul>
+        
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="container">
+                @if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("School Manag" +
+                   "ement System", "Index", "Dashboard", new { area = "" }, new { @class = "navbar-brand" })
+                }
+                else
+                {
+                    <a href"#" class="navbar-brand">School Management System</a>
+                }
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+
+
+
+
+                        <li>@Html.ActionLink("Students", "Index", "Student", new { area = "A_Students" }, new { @class = "nav-link" })</li>
+
+                        <li class="nav-link teacher-section-dropdown">
+                            Teacher
+                            <div class="dropdown-content">
+
+                                @if (User.IsInRole("Student"))
+                                {
+                                    <a href="/A_Students/Student/MyTeachers?studentId=@Session["Id"].ToString()" class="text-xxl-center"> My Teacher's</a>
+                                }
+
+                                else if (User.IsInRole("Admin"))
+                                {
+                                    <a href="/A_Teachers/Teacher/Index" class="text-xxl-center"> Teacher's List</a>
+                                }
+
+                            </div>
+
+
+
+
+                        </li>
+
+                        <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Account", new { area = "" }, new { @class = "nav-link " })</li>
+
+                        <li class="navbar-text m-lg-auto" style="color: white; font-size: large; font-weight: bold;">Welcome @User.Identity.Name 😊</li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        }
+
+
     </nav>
     <div class="container body-content">
         @RenderBody()
-        <hr />
+    @*    <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+            <p>&copy; @DateTime.Now.Year - SMS </p>
+        </footer>*@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    
 </body>
 </html>

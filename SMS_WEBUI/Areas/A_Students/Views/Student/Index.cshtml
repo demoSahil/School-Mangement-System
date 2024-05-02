@@ -1,0 +1,140 @@
+﻿@model IEnumerable<SMS_VO.Models.cls_Student_VO>
+
+@{
+
+    ViewBag.Title = "Student List";
+    ViewData["ToastMessage"] = TempData["_ToastMessage"];
+    string teacherName = ViewData["TeacherName"] as string;
+}
+<style>
+
+    td,th{
+        border-left:1.5px solid black;
+        border-bottom:1.5px solid black;
+    }
+
+    th{
+        border-top:1.5px solid black;
+       
+    }
+
+    .empty-th{
+        border-right:1.5px solid black;   
+    }
+    .crud {
+        text-decoration: white;
+        color: white;
+        background-color: darkblue;
+        font-weight: bolder;
+        border: 1px solid white;
+        border-radius: 0.2rem;
+        padding: 3px;
+        margin: 0.1rem;
+    }
+
+        .crud:hover {
+            text-decoration: none;
+            color: darkgrey;
+        }
+
+    .delete-btn {
+        background-color: crimson;
+    }
+
+    .create-new {
+        border: 1.5px solid black;
+        border-radius: 4px;
+        text-decoration: none;
+        color: black;
+        padding: 0.2rem;
+        background-color: darkgray;
+    }
+
+    .create-new:hover{
+        background-color:gray;
+        color:black;
+    }
+</style>
+
+@{
+    Html.RenderPartial("_Toaster", ViewData["ToastMessage"]);
+}
+
+@{
+    if (!string.IsNullOrEmpty(teacherName))
+    {
+        <h1> Faculty Name - @teacherName </h1>
+    }
+}
+<h2>Students List</h2>
+<p>
+    @Html.ActionLink("Create", "Create",new {} ,htmlAttributes: new { @class = "create-new" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th class="empty-th"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td class="student-id" id="@item.StudentID">
+                @Html.DisplayFor(modelItem => item.StudentID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td class="flex-md-row empty-th ">
+                @Html.ActionLink("Edit", "Edit", "Student", new { id = item.StudentID,area="A_Students" }, new { @class = "crud link-white" })
+                @Html.ActionLink("Details", "Details", "Student", new { id = item.StudentID, area = "A_Students" }, new { @class = "crud" })
+                @Html.ActionLink("Delete", "Delete", "Student", new { area = "A_Students" }, new { @class = "crud delete-btn", id = item.StudentID })
+            </td>
+        </tr>
+    }
+
+</table>
+@Scripts.Render("~/Content/JS/StudentList.js")

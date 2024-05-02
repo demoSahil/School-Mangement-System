@@ -1,15 +1,5 @@
 <Students>
   <Student>
-    <Id>1</Id>
-    <FirstName>Amittrr</FirstName>
-    <LastName>PatelL</LastName>
-    <DOB>1995-03-10T00:00:00</DOB>
-    <City>123, ABC Street, City, State, PIN</City>
-    <Gender>M</Gender>
-    <Email>amit.patel@email.com</Email>
-    <PhoneNumber>9518856982</PhoneNumber>
-  </Student>
-  <Student>
     <Id>2</Id>
     <FirstName>Priya</FirstName>
     <LastName>Sharma</LastName>
@@ -28,16 +18,6 @@
     <Gender>M</Gender>
     <Email>pooja.mishra@email.com</Email>
     <PhoneNumber>333-777-5555</PhoneNumber>
-  </Student>
-  <Student>
-    <Id>11</Id>
-    <FirstName>Kunal</FirstName>
-    <LastName>Sinha</LastName>
-    <DOB>1993-06-30T00:00:00</DOB>
-    <City>876, PQR Lane, Village, State, PIN</City>
-    <Gender>M</Gender>
-    <Email>kunal.sinha@email.com</Email>
-    <PhoneNumber>999-111-3333</PhoneNumber>
   </Student>
   <Student>
     <Id>13</Id>
@@ -61,22 +41,32 @@
   </Student>
   <Student>
     <Id>15</Id>
-    <FirstName>Vishal</FirstName>
-    <LastName>Mishra</LastName>
+    <FirstName>Sanjeev</FirstName>
+    <LastName>Kumari</LastName>
     <DOB />
-    <City>Hoshiarpur</City>
-    <Gender>M</Gender>
-    <Email>vishal@gmail.com</Email>
-    <PhoneNumber>7651781962</PhoneNumber>
+    <City>UP</City>
+    <Gender>O</Gender>
+    <Email>sahuakl@gmail.com</Email>
+    <PhoneNumber>884545154856</PhoneNumber>
   </Student>
   <Student>
     <Id>16</Id>
-    <FirstName>Sahil</FirstName>
-    <LastName>Singhq</LastName>
+    <FirstName>Ashwani</FirstName>
+    <LastName>Chaudhary</LastName>
     <DOB />
-    <City>Amritrsar</City>
-    <Gender>M</Gender>
-    <Email>sahil@gmail.com</Email>
-    <PhoneNumber>9518856982</PhoneNumber>
+    <City>Haridwar</City>
+    <Gender>F</Gender>
+    <Email>asheani@gmail.com</Email>
+    <PhoneNumber>989898</PhoneNumber>
+  </Student>
+  <Student>
+    <Id>17</Id>
+    <FirstName>Ashwani</FirstName>
+    <LastName>Chaudhary</LastName>
+    <DOB />
+    <City>Haridwar</City>
+    <Gender>O</Gender>
+    <Email>asheani@gmail.com</Email>
+    <PhoneNumber>989898</PhoneNumber>
   </Student>
 </Students>

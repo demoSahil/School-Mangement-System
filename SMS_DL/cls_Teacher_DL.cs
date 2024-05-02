@@ -135,6 +135,27 @@ namespace SMS_DL
             }
         }
 
+        /*public int? GetTotalTeachers()
+        {
+            using (SqlConnection cnn = new SqlConnection(connectionString))
+            {
+                cnn.Open();
+                string query = "SELECT COUNT(Teacher_ID) AS TeachertCount FROM  Teachers";
+                using (SqlCommand cmd = new SqlCommand(query, cnn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            return Convert.ToInt32(reader[0]);
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }*/
+
 
     }
 }

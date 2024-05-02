@@ -23,12 +23,12 @@ namespace SMS_DL
             using (SqlConnection cnn = new SqlConnection(connectionString))
             {
                 cnn.Open();
-                string query = "INSERT INTO Users(UserName,UserType,Password) VALUES (@name,@type,HASHBYTES(SHA2_256,@password)";
+                string query = "INSERT INTO Users(UserName,UserType,Password) VALUES (@name,@type,@password)";
                 using (SqlCommand cmd = new SqlCommand(query, cnn))
                 {
                     cmd.Parameters.AddWithValue("name", user.UserName);
                     cmd.Parameters.AddWithValue("type", user.UserType);
-                    cmd.Parameters.AddWithValue("password", user.Password);
+                    cmd.Parameters.AddWithValue("password", Hash(user.Password));
                     return cmd.ExecuteNonQuery() > 0;
                 }
             }

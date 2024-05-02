@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cls_Mail_VO.cs" />
     <Compile Include="cls_TeacherStudentViewModel_VO.cs" />
     <Compile Include="cls_Student_VO.cs" />
     <Compile Include="cls_Teacher_VO.cs" />
